@@ -54,6 +54,13 @@ io.sockets.on('connection', function (socket) {
 		
 	});
 	
+	socket.on('location', function(data) {
+		console.log(JSON.stringify(data));
+		socket.set('location', data, function() {
+			console.log("Saved user location on socket object.");
+		});
+	})
+
 	socket.on('request_tag', function(data) {
 		console.log("Requested tag", data);
 		var stream = collection.find( { tags: { $in: data }}).stream();
@@ -67,10 +74,7 @@ io.sockets.on('connection', function (socket) {
 	});
 	
 	socket.on('disconect', function() {
-		Chat.connections--;
-		if (Chat.connections == 0) {
-			Chat.stop();
-		}
+		
 	});
 	
 });
