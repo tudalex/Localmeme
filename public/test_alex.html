@@ -1,7 +1,28 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
+function getUserLocation() { 
+
+//check if the geolocation object is supported, if so get position
+if (navigator.geolocation)
+	navigator.geolocation.getCurrentPosition(displayLocation, function(){});
+else
+	document.getElementById("locationData").innerHTML = "Sorry - your browser doesn't support geolocation!";
+}
+
+function displayLocation(position) { 
+
+//build text string including co-ordinate data passed in parameter
+var displayText = "User latitude is " + position.coords.latitude + " and longitude is " + position.coords.longitude;
+
+//display the string for demonstration
+document.getElementById("locationData").innerHTML = displayText;
+socket.emit('location', position);
+}
+
   var socket = io.connect();
+  getUserLocation();
   socket.emit('request_tag', ["awesome"]);
+
   socket.on('news', function (data) {
     console.log(data);
   });
@@ -9,3 +30,6 @@
   	console.log(data);
   });
 </script>
+<body>
+	<div id="locationData"></div>
+</body>
