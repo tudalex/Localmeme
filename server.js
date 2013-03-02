@@ -61,6 +61,9 @@ io.sockets.on('connection', function (socket) {
 			console.log("Recieved a stream messages.");
 			socket.emit('meme', item);
 		});
+		stream.on('end', function() {
+			console.log("Stream has finished.");
+		});
 	});
 	
 	socket.on('disconect', function() {
