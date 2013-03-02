@@ -40,13 +40,10 @@ var memeInterface = {
 	drawTextCb: function(e) {
 		this.textContext.clearRect(0, 0, this.width, this.height);
 		var x = this.width/2;
-		//this.textContext.fillText(this.textInput[0].value, x, 40);
-		//this.textContext.fillText(this.textInput[1].value, x, 250);
-		//this.textContext.fillText(this.textInput[2].value, x, 540);
 		
 		var y = [40, 250, 540];
 		for (var i = 0; i < 3; ++i)
-			wrapText(this.textContext, this.textInput[i].value, x, y[i], maxLineLength, lineHeight);
+			wrapText(this.textContext, this.textInput[i].value, x, y[i], this.maxLineLength, this.lineHeight);
 	},
 	
 	initText: function() {
@@ -109,9 +106,6 @@ var memeInterface = {
 		this.initBg();
 	}
 };
-
-////	imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
-//});
 
 $(function() {
 	memeInterface.init();
