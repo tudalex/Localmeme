@@ -26,7 +26,7 @@ var collection;
 MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
   if(err) { return console.dir(err); }
   console.log("Connected to mongo.");
-  collection = =db.collection('meme');
+  collection  =db.collection('meme');
 });
  
 
