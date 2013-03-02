@@ -23,7 +23,7 @@ server.listen(8080);
  var MongoClient = require('mongodb').MongoClient;
 var collection;
 
-MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
+MongoClient.connect("mongodb://localhost:27017/content", function(err, db) {
   if(err) { return console.dir(err); }
   console.log("Connected to mongo.");
   collection  =db.collection('meme');
