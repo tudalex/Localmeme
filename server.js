@@ -26,7 +26,7 @@ var collection;
 MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
   if(err) { return console.dir(err); }
   console.log("Connected to mongo.");
-  collection = db.collection('meme');
+  collection = =db.collection('meme');
 });
  
 
@@ -61,7 +61,7 @@ io.sockets.on('connection', function (socket) {
 	
 	socket.on('request_tag', function(data) {
 		console.log("Requested tag", data);
-		var stream = collection.find( { tags: { $all: data }}).stream();
+		var stream = collection.find( { tags: { $in: data }}).stream();
 		stream.on('data', function (item) { 
 			socket.emit('meme', item);
 		});
