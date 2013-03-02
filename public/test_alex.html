@@ -17,6 +17,7 @@ var displayText = "User latitude is " + position.coords.latitude + " and longitu
 //display the string for demonstration
 document.getElementById("locationData").innerHTML = displayText;
 socket.emit('location', position);
+socket.emit('request_tags_near_location', position.coords);
 }
 
   var socket = io.connect();

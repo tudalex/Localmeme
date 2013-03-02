@@ -27,6 +27,7 @@ MongoClient.connect("mongodb://localhost:27017/content", function(err, db) {
   if(err) { return console.dir(err); }
   console.log("Connected to mongo.");
   collection  =db.collection('meme');
+  col_tags = db.collection('tags');
 });
  
 
@@ -43,7 +44,7 @@ io.sockets.on('connection', function (socket) {
 		collection.insert(data);
 		for (var socketId in io.sockets.sockets) {
 			io.sockets.sockets[socketId].get('location'), function (err, location) {
-				//TODO(tudalex): put a condition over here
+				location.cooridonates.
 				io.sockets.sockets[socketId].emit(data);
 			}
 		}
@@ -73,6 +74,17 @@ io.sockets.on('connection', function (socket) {
 		});
 	});
 	
+	socket.on('request_tags_near_location', function (data) { 
+		console.log(data);
+		var stream = col_tags.find( {location: { $within : {$center: [data.latitude, data.longitude], 1}}});
+		console.log("Searching for tags around "+data.latitude+" "+data.longitude);
+		stream.on('data', function (item) {
+			socket.emit('tag', item);
+		});
+		stream.on('end', function() {
+			console.log("End of tag stream.");
+		})
+	});
 	socket.on('disconect', function() {
 		
 	});
