@@ -20,31 +20,15 @@ server.listen(8080);
 /*
  * 
  */
+ var MongoClient = require('mongodb').MongoClient;
+var collection;
 
-var Chat = {
-	connections: 0,
-	question : -1,
-	time: 0,
-	
-	stop: function () {
-			
-	},
-
-	next: function () {
-		Chat.question++;
-		if (Chat.question == 4)
-			Chat.question = 1;
-		RedisQuestions.sendNextQuestion();
-		time = setTimeout(Chat.next, 10000);		
-	},
-	
-	start: function () {
-		this.question = 1;
-		time = setTimeout(Chat.next, 10000);
-	},
-};
-
-
+MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
+  if(err) { return console.dir(err); }
+  console.log("Connected to mongo.");
+  collection = db.collection('meme');
+});
+ 
 
 io.sockets.on('connection', function (socket) {
 	
@@ -57,18 +41,30 @@ io.sockets.on('connection', function (socket) {
 
 	socket.on('authenticate', function(data) {
 		console.log('Authectication key : ' + data);
-		
-		
+
 	});
 
+	socket.on ('meme_posted', function (data) {
+		collection.insert(data);
+		for (var socketId in io.sockets.sockets) {
+			io.sockets.sockets[socketId].get('location'), function (err, location) {
+				//TODO(tudalex): put a condition over here
+				io.sockets.sockets[socketId].emit(data);
+			}
+		}
+		
+	});
 	socket.on('login', function(data) {
 		console.log(JSON.stringify(data));
 		
 	});
 	
-	socket.on('chat', function (data) {
-			
-
+	socket.on('request_tag', function(data) {
+		console.log("Requested tag", data);
+		var stream = collection.find( { tags: { $all: data }}).stream();
+		stream.on('data', function (item) { 
+			socket.emit('meme', item);
+		});
 	});
 	
 	socket.on('disconect', function() {
@@ -79,23 +75,3 @@ io.sockets.on('connection', function (socket) {
 	});
 	
 });
-
-
-function genQuestion(question, anwsers, right) {
-	this.id = 0;
-	this.question = question;
-	this.answers = anwsers;
-	this.right = right;
-}
-
-function emitToAll(msg) {
-	io.sockets.emit('chat', msg);
-}
-
-
-
-
-
-
-
-
