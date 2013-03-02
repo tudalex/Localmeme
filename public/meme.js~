@@ -46,7 +46,7 @@ var memeInterface = {
 		
 		var y = [40, 250, 540];
 		for (var i = 0; i < 3; ++i)
-			wrapText(this.textContext, this.textInput[i].value, x, y[i], this.maxLineLength, this.lineHeight);
+			wrapText(this.textContext, this.textInput[i].value, x, y[i], maxLineLength, lineHeight);
 	},
 	
 	initText: function() {
