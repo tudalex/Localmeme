@@ -58,6 +58,7 @@ io.sockets.on('connection', function (socket) {
 		console.log("Requested tag", data);
 		var stream = collection.find( { tags: { $in: data }}).stream();
 		stream.on('data', function (item) { 
+			console.log("Recieved a stream messages.");
 			socket.emit('meme', item);
 		});
 	});
