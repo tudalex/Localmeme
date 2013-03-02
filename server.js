@@ -34,11 +34,6 @@ io.sockets.on('connection', function (socket) {
 	
 	console.log('New Client Connected');
 
-	Chat.connections++;
-	
-	if (Chat.connections == 1)
-		Chat.start();
-
 	socket.on('authenticate', function(data) {
 		console.log('Authectication key : ' + data);
 
