@@ -43,9 +43,10 @@ io.sockets.on('connection', function (socket) {
 	});
 
 	socket.on ('meme_posted', function (data) {
-		console.log(data);
+		
 		socket.get('location', function (err, pos) {
 			data.loc = { x: pos.coords.latitude, y: pos.coords.longitude };
+			console.log(data);
 			collection.insert(data);
 		});
 		collection.insert(data);
