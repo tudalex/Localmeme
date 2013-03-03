@@ -24,7 +24,7 @@ Meme.prototype.buildNode = function() {
 	this.head = $(document.createElement('h1'));
 	this.head.text(this.info.title);
 	this.container.append(this.head);
-	return this.container;
+	return this.container[0];
 };
 
 Meme.prototype.drawText = function() {
@@ -36,7 +36,7 @@ Meme.prototype.drawText = function() {
 	this.context.textAlign = 'center';
 	this.context.textBaseline = 'middle';
 
-	for (var i = 0; i < 3; ++i)
+	for (var i = 0; i < this.info.text.length; ++i)
 		wrapText(this.context, this.info.text[i], x, y[i], this.canvas.width * 0.8, this.lineHeight);
 		
 	this.saveAsImg();
@@ -47,8 +47,10 @@ Meme.prototype.drawBgCb = function(e) {
 	var width = this.canvas.width;
 	var height = width * this.image.height / this.image.width;
 	
-	this.canvas.width = width;
+	this.canvas.height = height;
 	
+	console.log(width);
+	console.log(this.canvas);
 	this.context.drawImage(this.image, 0, 0, this.image.width, this.image.height, 0, 0, width, height);
 	
 	if (this.isFromServer)
@@ -68,7 +70,7 @@ Meme.prototype.loadFromLocalStorage = function() {
 
 Meme.prototype.loadFromServer = function() {
 	this.isFromServer = true;
-	this.image.src = this.info.background;
+	this.image.src = "../Backgrounds/" + this.info.background;
 };
 
 
