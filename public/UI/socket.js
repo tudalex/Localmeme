@@ -50,6 +50,7 @@ socket.on('tag_end', function(data) {
     var checkbox = document.createElement('checkbox');
     checkbox.id = tags[id];
     checkbox.type = "checkbox";
+    checkbox.name = "";
     var label = document.createElement('label');
     label.setAttribute('for', tags[id]); 
     checkbox.addEventListener('change', function() {
