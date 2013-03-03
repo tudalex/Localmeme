@@ -48,17 +48,18 @@ io.sockets.on('connection', function (socket) {
 			data.loc = { x: pos.coords.latitude, y: pos.coords.longitude };
 			console.log(data);
 			collection.insert(data);
+			for (var x in data.tags) {
+				socket.in(data.tags[x]).emit('meme', data);
+			}
 		});
-		collection.insert(data);
+		
 	/*	for (var socketId in io.sockets.sockets) {
 			io.sockets.sockets[socketId].get('location'), function (err, location) {
 				location.cooridonates.
 				io.sockets.sockets[socketId].emit(data);
 			}
 		}*/
-		for (var x in data.tags) {
-			socket.in(data.tags[x]).emit('meme', data);
-		}
+		
 		
 	});
 	socket.on('login', function(data) {
