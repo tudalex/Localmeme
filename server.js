@@ -45,7 +45,7 @@ io.sockets.on('connection', function (socket) {
 	socket.on ('meme_posted', function (data) {
 		
 		socket.get('location', function (err, pos) {
-			if (!pos.hasOwnProperty('coords'))
+			if (!pop)
 				data.loc = {x: 0, y:0};
 			else
 				data.loc = { x: pos.coords.latitude, y: pos.coords.longitude };
