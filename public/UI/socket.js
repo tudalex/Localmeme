@@ -10,8 +10,6 @@ function displayLocation(position) {
 
 //build text string including co-ordinate data passed in paramete
   //display the string for demonstration
-  if (!position.hasOwnProperty('coords'))
-    return;
   socket.emit('location', position);
   if (!tags_loaded) {
     socket.emit('request_tags_near_location', position.coords);

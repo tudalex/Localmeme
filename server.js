@@ -45,15 +45,19 @@ io.sockets.on('connection', function (socket) {
 	socket.on ('meme_posted', function (data) {
 		
 		socket.get('location', function (err, pos) {
+			console.log(JSON.stringify(pos));
+			console.log(JSON.stringify(err));
 			if (!pos)
 				data.loc = {x: 0, y:0};
 			else
 				data.loc = { x: pos.coords.latitude, y: pos.coords.longitude };
 			console.log(data);
 			collection.insert(data,{w:1}, function(err, result) {});
-			for (var x in data.tags) {
+			/*for (var x in data.tags) {
 				socket.in(data.tags[x]).emit('meme', data);
-			}
+			}*/
+			socket.broadcast.emit('meme', data);
+			socket.emit('meme', data);
 		});
 		
 	/*	for (var socketId in io.sockets.sockets) {
