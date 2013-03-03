@@ -24,7 +24,7 @@ Meme.prototype.buildNode = function() {
 	this.head = $(document.createElement('h1'));
 	this.head.text(this.info.title);
 	this.container.append(this.head);
-	return this.container;
+	return this.container[0];
 };
 
 Meme.prototype.drawText = function() {
