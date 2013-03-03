@@ -68,7 +68,7 @@ Meme.prototype.loadFromLocalStorage = function() {
 
 Meme.prototype.loadFromServer = function() {
 	this.isFromServer = true;
-	this.image.src = this.info.background;
+	this.image.src = "../backgrounds/" + this.info.background;
 };
 
 
