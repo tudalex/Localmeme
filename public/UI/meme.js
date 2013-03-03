@@ -1,3 +1,4 @@
+$.mobile.ignoreContentEnabled = true;
 $(function() {
 	Device.getInfo();
 	memeInterface.init();
