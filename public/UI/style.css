@@ -16,14 +16,14 @@
 	display: hidden;
 }
 
-#submitmeme {
+#memetext {
 	position: absolute;
 	margin: 0;
 	height: 100%;
 	width: 100%;
 }
 
-#submitmeme .memeTextInput {
+#memetext .memeTextInput {
 	display: block;
 	float: left;
 	margin: 0;

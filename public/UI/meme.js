@@ -123,10 +123,28 @@ var memeInterface = {
 		this.width = Device.width;
 	},
 	
+	initForm: function() {
+		this.form.memetext = document.getElementById("memetext");
+		this.form.memetags = document.getElementById("memetags");
+		this.form.memesubmit = document.getElementById("memesubmit");
+		this.form.memesubmit.addEventListener("click", this.subitMeme).bind(this);
+	},
+	
 	init: function() {
 		this.initDeviceProp();
 		this.initText();
 		this.initBg('darth-vader.jpg');
+		this.initForm();
+	},
+	
+	subitMeme: function() {
+		var obj = {
+			text = [],
+		}
+		obj.id = this.bgImage;
+		obj.tags = this.form.memetags.value.split(", ");
+		for (var i in this.form.memetext)
+			obj.text.push(this.form.memetext[i].value);
 	}
 }
 
