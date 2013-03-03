@@ -89,6 +89,7 @@ var Homepage = {
 	},
 	
 	loadMeme: function(info) {
+		console.log(this);
 		var X = new Meme(info);
 		this.content.appendChild(X.buildNode());
 		X.render(this.canvas);
