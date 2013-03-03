@@ -4,7 +4,8 @@ function getUserLocation() {
 if (navigator.geolocation)
 	navigator.geolocation.getCurrentPosition(displayLocation, function(){});
 }
-
+var tags_loaded = false;
+var backgrounds_loaded = false;
 function displayLocation(position) { 
 
 //build text string including co-ordinate data passed in paramete
@@ -12,7 +13,10 @@ function displayLocation(position) {
   if (!position.hasOwnProperty('coords'))
     return;
   socket.emit('location', position);
-  socket.emit('request_tags_near_location', position.coords);
+  if (!tags_loaded) {
+    socket.emit('request_tags_near_location', position.coords);
+    tags_loaded = true;
+  }
 }
 
 
@@ -24,10 +28,16 @@ var backgrounds = new Array();
 var tags = new Array();
 var	socket = io.connect();
 
+
 socket.on('connect', function() {
   getUserLocation();
+  
   socket.emit('request_tag', ["awesome"]);
-  socket.emit('request_backgrounds');
+  
+  if (!backgrounds_loaded) {
+    socket.emit('request_backgrounds');
+    backgrounds_loaded = true;
+  }
 });
 
 socket.on('news', function (data) {
@@ -39,13 +49,13 @@ socket.on('meme', function (data) {
 });
 
 socket.on('tag', function (data){
-	console.log(data);
+	//console.log(data);
   tags.push(data._id);
 });
-
+var tags_loaded = 0;
 socket.on('tag_end', function(data) {
   var t = $("#tags_checkboxes");
-  console.log(t);
+  //console.log(t);
   t.empty();
   var legend = document.createElement('legend');
   legend.innerHTML = "Alegeti streamuri:";
@@ -68,13 +78,14 @@ socket.on('tag_end', function(data) {
     t.appendChild(label);
   }
   $("#tags").trigger("create");
-  console.log(t);
+
+  //console.log(t);
 
 });
 
 socket.on('background', function (data) {
   backgrounds.push(data._id);
-  console.log(data);
+  //console.log(data);
 });
 
 socket.on('background_end', function(data) {
