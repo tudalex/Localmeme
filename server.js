@@ -43,12 +43,16 @@ io.sockets.on('connection', function (socket) {
 	});
 
 	socket.on ('meme_posted', function (data) {
+		console.log(data);
 		collection.insert(data);
-		for (var socketId in io.sockets.sockets) {
+	/*	for (var socketId in io.sockets.sockets) {
 			io.sockets.sockets[socketId].get('location'), function (err, location) {
 				location.cooridonates.
 				io.sockets.sockets[socketId].emit(data);
 			}
+		}*/
+		for (var x in data.tags) {
+			socket.in(data.tags[x]).emit('meme', data);
 		}
 		
 	});
@@ -73,7 +77,7 @@ io.sockets.on('connection', function (socket) {
 		});
 		stream.on('end', function() {
 			console.log("Stream has finished.");
-			
+
 		});
 	});
 	
@@ -99,6 +103,13 @@ io.sockets.on('connection', function (socket) {
 			socket.emit('background_end', {});
 			console.log("End of tag stream.");
 		});
+	});
+
+	socket.on('subscribe', function (data) {
+		socket.join(data.room);
+	});
+	socket.on('unsubscribe', function (data) {
+		socket.leave(data.room);
 	});
 	socket.on('disconect', function() {
 		

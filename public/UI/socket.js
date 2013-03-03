@@ -48,7 +48,7 @@ socket.on('tag_end', function(data) {
   console.log(t);
   t.empty();
   var legend = document.createElement('legend');
-  legend.innerHTML = "Alegeti un stream:";
+  legend.innerHTML = "Alegeti streamuri:";
   t.appendChild(legend);
   for (var id in tags) {
     var checkbox = document.createElement('input');
