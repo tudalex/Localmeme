@@ -2,6 +2,7 @@
 window.onload = function() {
 	Device.getInfo();
 	memeInterface.init();
+	Homepage.init();
 
 	Stats.backgrounds++;
 	if (Stats.backgrounds == 2)
@@ -73,6 +74,24 @@ var BackgroundPage = {
 			memeInterface.initBg(e.target.src);
 			window.location.hash = "#addpage";
 		}
+	}
+}
+
+var Homepage = {
+	
+	content : null,
+	canvas : null,
+	
+	init : function () {
+		this.content = document.getElementById("memelist");
+		this.canvas = document.createElement("canvas");
+		this.canvas.width = Device.width;
+	},
+	
+	loadMeme: function(info) {
+		var X = new Meme(info);
+		this.content.appendChild(X.buildNode());
+		X.render(this.canvas);
 	}
 }
 
