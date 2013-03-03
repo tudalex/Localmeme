@@ -86,7 +86,7 @@ var Homepage = {
 	init : function () {
 		this.content = document.getElementById("memelist");
 		this.canvas = document.createElement("canvas");
-		this.canvas.width = Device.width;
+		this.canvas.width = Math.max(Device.width, Device.height);
 	},
 	
 	loadMeme: function(info) {
