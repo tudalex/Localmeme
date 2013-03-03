@@ -44,8 +44,12 @@ socket.on('tag', function (data){
 });
 
 socket.on('tag_end', function(data) {
-  var t = document.getElementById("tags_checkboxes");
+  var t = $("#tags_checkboxes");
   console.log(t);
+  t.empty();
+  var legend = document.createElement('legend');
+  legend.innerHTML = "Alegeti un stream:";
+  t.appendChild(legend);
   for (var id in tags) {
     var checkbox = document.createElement('input');
     checkbox.id = tags[id];
