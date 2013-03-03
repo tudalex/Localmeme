@@ -46,6 +46,7 @@ socket.on('news', function (data) {
 
 socket.on('meme', function (data) {
 	console.log(data);
+	Homepage.loadMeme(data);
 });
 
 socket.on('tag', function (data){
