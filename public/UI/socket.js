@@ -47,12 +47,13 @@ socket.on('tag_end', function(data) {
   var t = document.getElementById("tags_checkboxes");
   console.log(t);
   for (var id in tags) {
-    var checkbox = document.createElement('checkbox');
+    var checkbox = document.createElement('input');
     checkbox.id = tags[id];
     checkbox.type = "checkbox";
-    checkbox.name = "";
+    checkbox.setAttribute('name', '');
     var label = document.createElement('label');
     label.setAttribute('for', tags[id]); 
+    label.innerHTML=tags[id];
     checkbox.addEventListener('change', function() {
       if (checkbox.value == true) 
         socket.emit('subscribe', {room: tags[id]});
