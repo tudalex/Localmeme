@@ -75,6 +75,8 @@ var memeInterface = {
 	
 	drawBgCb: function(e) {
 		
+			console.log("DAAAA");
+		
 			this.height = this.width * this.bgImage.height / this.bgImage.width;
 			this.resizeCanvas();
        		this.bgContext.drawImage(this.bgImage, 0, 0, this.bgImage.width, this.bgImage.height, 0, 0, this.width, this.height);
