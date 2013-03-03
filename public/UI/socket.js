@@ -14,10 +14,13 @@ function displayLocation(position) {
 }
 var backgrounds = new Array();
 var tags = new Array();
-var socket;
-window.onload = function () { 
-  socket = io.connect();
-}
+var	socket = io.connect();
+
+window.onload = function() {
+	Device.getInfo();
+	memeInterface.init();
+};
+
 
 socket.on('connect', function() {
   getUserLocation();
