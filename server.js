@@ -73,6 +73,7 @@ io.sockets.on('connection', function (socket) {
 		});
 		stream.on('end', function() {
 			console.log("Stream has finished.");
+			
 		});
 	});
 	

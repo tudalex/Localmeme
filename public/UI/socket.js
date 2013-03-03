@@ -44,7 +44,8 @@ socket.on('tag', function (data){
 });
 
 socket.on('tag_end', function(data) {
-  var t = document.getElementById("tags");
+  var t = document.getElementById("tags_checkboxes");
+  console.log(t);
   var checkbox = document.createElement('checkbox');
   checkbox.id = data._id;
   checkbox.type = "checkbox";
@@ -58,6 +59,7 @@ socket.on('tag_end', function(data) {
   });
   t.appendChild(checkbox);
   t.appendChild(label);
+  console.log(t);
 
 });
 
