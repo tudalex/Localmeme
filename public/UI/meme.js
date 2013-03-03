@@ -125,10 +125,10 @@ var memeInterface = {
 	},
 	
 	initForm: function() {
+		document.addEventListener
 		this.form.memetext = document.getElementById("memetext");
 		this.form.memetags = document.getElementById("memetags");
-		this.form.memesubmit = document.getElementById("memesubmit");
-		this.form.memesubmit.addEventListener("click", this.submitMeme).bind(this);
+		document.getElementById("memesubmit").addEventListener("click", this.submitMeme).bind(this);
 	},
 	
 	init: function() {
