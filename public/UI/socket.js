@@ -51,7 +51,7 @@ socket.on('tag_end', function(data) {
     checkbox.id = id;
     checkbox.type = "checkbox";
     var label = document.createElement('label');
-    label.setAttribute('for') = id; 
+    label.setAttribute('for', id); 
     checkbox.addEventListener('change', function() {
       if (checkbox.value == true) 
         socket.emit('subscribe', {room: id});
