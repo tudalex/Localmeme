@@ -73,8 +73,6 @@ var BackgroundPage = {
 		if (e.target.className == 'thumbnail') {
 			memeInterface.initBg(e.target.src);
 			window.location.hash = "#addpage";
-			for(var i=0; i<3; i++)
-				memeInterface.form.memetext.children[i].textContent = "";
 		}
 	}
 }
