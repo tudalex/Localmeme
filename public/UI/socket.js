@@ -18,12 +18,6 @@ var backgrounds = new Array();
 var tags = new Array();
 var	socket = io.connect();
 
-window.onload = function() {
-	Device.getInfo();
-	memeInterface.init();
-};
-
-
 socket.on('connect', function() {
   getUserLocation();
   socket.emit('request_tag', ["awesome"]);
@@ -70,5 +64,6 @@ socket.on('background', function (data) {
   console.log(data);
 });
 socket.on('background_end', function(data) {
+	BackgroundPage.loadImages();
   //TODO(gabi): Write page generating code over here.
 });

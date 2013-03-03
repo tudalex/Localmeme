@@ -1,4 +1,9 @@
 
+window.onload = function() {
+	Device.getInfo();
+	memeInterface.init();
+};
+
 Device = {
 	width: 960,
 	height: null, 
@@ -37,6 +42,26 @@ function getHeight() {
 	return xHeight;
 }
 
+var BackgroundPage = {
+	
+	page : null,
+	
+	createNewImg : function(url) {
+		var node = document.createElement("div");
+		node.className = "thumbnail";
+		node.style.background = url;
+		return nide;
+	},
+	
+	loadImages : function () {
+		this.page = document.getElementById("imgcontent");
+		
+		for (var i in backgrounds)
+			this.page.append(this.createNewImg(backgrounds[i]._id))
+		
+	}
+	
+}
 
 
 
