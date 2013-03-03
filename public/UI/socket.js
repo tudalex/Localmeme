@@ -61,6 +61,7 @@ socket.on('tag_end', function(data) {
     t.appendChild(checkbox);
     t.appendChild(label);
   }
+  $("#tags").trigger("create");
   console.log(t);
 
 });
