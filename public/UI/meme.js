@@ -141,7 +141,7 @@ var memeInterface = {
 		var obj = {
 			text : []
 		}
-		obj.id = this.bgImage.src;
+		obj.background = this.bgImage.src;
 		obj.tags = this.form.memetags.value.split(",");
 		for (var i=0; i<3; i++)
 			obj.text.push(this.form.memetext.children[2 * i].value);
