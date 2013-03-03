@@ -14,7 +14,10 @@ function displayLocation(position) {
 }
 var backgrounds = new Array();
 var tags = new Array();
-var socket = io.connect();
+var socket;
+window.onload = function () { 
+  socket = io.connect();
+}
 
 socket.on('connect', function() {
   getUserLocation();
@@ -35,7 +38,14 @@ socket.on('tag', function (data){
   tags.push(data._id);
 });
 
+socket.on('tag_end', function(data) {
+
+});
+
 socket.on('background', function (data) {
   backgrounds.push(data._id);
   console.log(data);
+});
+socket.on('background_end', function(data) {
+  //TODO(gabi): Write page generating code over here.
 });

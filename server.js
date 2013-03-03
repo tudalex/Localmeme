@@ -84,6 +84,7 @@ io.sockets.on('connection', function (socket) {
 			socket.emit('tag', item);
 		});
 		stream.on('end', function() {
+			socket.emti('tag_end', {});
 			console.log("End of tag stream.");
 		});
 	});
@@ -94,6 +95,7 @@ io.sockets.on('connection', function (socket) {
 			socket.emit('background', item);
 		});
 		stream.on('end', function() {
+			socket.emit('background_end', {});
 			console.log("End of tag stream.");
 		});
 	});
