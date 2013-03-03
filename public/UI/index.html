@@ -15,37 +15,33 @@
         <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"> </script>
         <script src="main.js"></script>
         <script src="meme.js"></script>
-        <script src="meme2.js"></script>
-
     </head>
 	<body>
 		
 	<!-- Home -->
 	<div data-role="page" id="homepage">
 	    <div data-theme="c" data-role="header">
-	        <a data-role="button" data-direction="reverse" data-transition="slide"
-	        href="#addpage" class="ui-btn-right">
+			<a data-role="button" data-direction="reverse" data-transition="slide" href="#addpage" class="ui-btn-right">
 				Add
-	        </a>
-	        <h3>
-	            Localmeme
-	        </h3>
+			</a>
+			<h3> Localmeme </h3>
 	    </div>
 	    
 	    <div data-role="content">
 	    </div>
 	</div>
 
-	<!-- Home -->
+	<!-- Add meme -->
 	<div data-role="page" id="addpage">
 		<div data-theme="c" data-role="header">
 			<a data-role="button" data-transition="slide" href="#homepage" data-icon="arrow-l"
 			data-iconpos="left" class="ui-btn-left">
 				Back
 			</a>
-			<h3>
-				Add a meme
-			</h3>
+			<a data-role="button" data-direction="reverse" data-transition="slide" href="#imagespage" class="ui-btn-right">
+				Select Image
+			</a>
+			<h3> Add a meme </h3>
 		</div>
 		<div id="addpage_content" data-role="content">
 			<div id="meme">
@@ -60,7 +56,23 @@
 			<input value="Submit" type="submit">
 		</div>
 	</div>
-	<!-- Home -->
+
+	<!-- Images page -->
+	<div data-role="page" id="imagespage">
+	    <div data-theme="c" data-role="header">
+			<a data-role="button" data-transition="slide" href="#homepage" data-icon="arrow-l"
+			data-iconpos="left" class="ui-btn-left">
+				Back
+			</a>
+			<h3> Select an image </h3>
+	    </div>
+	    
+	    <div data-role="content">
+	    		
+	    </div>
+	</div>
+
+	<!-- Tags -->
 	<div data-role="page" id="tags">
 	    <div data-theme="c" data-role="header">
 	        <a data-role="button" data-direction="reverse" data-transition="slide"
@@ -75,7 +87,6 @@
 	    <div data-role="content">
 	    </div>
 	</div>
-
 		
 	</body>
 </html>

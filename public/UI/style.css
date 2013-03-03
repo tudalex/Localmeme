@@ -1,4 +1,10 @@
 
+
+#addpage_content {
+	margin: 0;
+	padding: 0;
+}
+
 #meme {
 	position: relative;
 }
