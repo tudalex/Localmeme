@@ -34,6 +34,7 @@ var memeInterface = {
 	lineHeight: 65,
 	maxLineLength: 570,
 	
+	form: {},
 	isFromServer: false,
 	bgCanvas: null,
 	bgContext: null,
@@ -74,8 +75,6 @@ var memeInterface = {
 	},
 	
 	drawBgCb: function(e) {
-		
-			console.log("DAAAA");
 		
 			this.height = this.width * this.bgImage.height / this.bgImage.width;
 			this.resizeCanvas();
@@ -145,9 +144,9 @@ var memeInterface = {
 			text : []
 		}
 		obj.id = this.bgImage;
-		obj.tags = this.form.memetags.value.split(", ");
-		for (var i in this.form.memetext)
-			obj.text.push(this.form.memetext[i].value);
+		obj.tags = this.form.memetags.value.split(",");
+		for (var i=0; i<3; i++)
+			obj.text.push(this.form.memetext.children[2 * i].value);
 			
 		console.log(obj);	
 	}
