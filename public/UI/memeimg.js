@@ -3,7 +3,7 @@ var Meme = function(info) {
 		info.text = info.test;
 		
 	this.info = info;
-	this.info.title = this.text.join(' ');
+	this.info.title = info.text.join(' ');
 	this.isFromServer = false;
 	this.fontSize = 60;
 	this.lineHeight = 40;
