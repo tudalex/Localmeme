@@ -54,7 +54,7 @@ io.sockets.on('connection', function (socket) {
 			/*for (var x in data.tags) {
 				socket.in(data.tags[x]).emit('meme', data);
 			}*/
-			socket.broadcast('meme', data);
+			socket.broadcast.emit('meme', data);
 		});
 		
 	/*	for (var socketId in io.sockets.sockets) {
