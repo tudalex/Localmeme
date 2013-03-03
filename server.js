@@ -84,7 +84,7 @@ io.sockets.on('connection', function (socket) {
 			socket.emit('tag', item);
 		});
 		stream.on('end', function() {
-			socket.emti('tag_end', {});
+			socket.emit('tag_end', {});
 			console.log("End of tag stream.");
 		});
 	});
