@@ -127,6 +127,7 @@ var memeInterface = {
 	initForm: function() {
 		this.form.memetext = document.getElementById("memetext");
 		this.form.memetags = document.getElementById("memetags");
+		$("#memesubmit").bind('click',this.submitMeme.bind(this));
 	},
 	
 	init: function() {
@@ -145,7 +146,8 @@ var memeInterface = {
 		for (var i=0; i<3; i++)
 			obj.text.push(this.form.memetext.children[2 * i].value);
 			
-		socket.emit("memeposted", obj);	
+		socket.emit("meme_posted", obj);
+		console.log(obj);
 	}
 }
 
