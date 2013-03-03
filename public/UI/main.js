@@ -71,7 +71,7 @@ var BackgroundPage = {
 	pickImage: function (e) {
 		if (e.target.className == 'thumbnail') {
 			memeInterface.initBg(e.target.src);
-			console.log("loaded", e.target.src);
+			window.location.hash = "#addpage";
 		}
 	}
 }
