@@ -74,7 +74,7 @@ var BackgroundPage = {
 			memeInterface.initBg(e.target.src);
 			window.location.hash = "#addpage";
 			for(var i=0; i<3; i++)
-				memeInterface.form.children[i].textContent = "";
+				memeInterface.form.memetext.children[i].textContent = "";
 		}
 	}
 }
