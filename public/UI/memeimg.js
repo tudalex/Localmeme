@@ -2,6 +2,8 @@ var Meme = function(info) {
 	if(!info.text)
 		info.text = info.test;
 		
+	console.log(info);	
+		
 	this.info = info;
 	this.info.title = info.text.join(' ');
 	this.isFromServer = false;
