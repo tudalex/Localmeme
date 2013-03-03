@@ -46,19 +46,21 @@ socket.on('tag', function (data){
 socket.on('tag_end', function(data) {
   var t = document.getElementById("tags_checkboxes");
   console.log(t);
-  var checkbox = document.createElement('checkbox');
-  checkbox.id = data._id;
-  checkbox.type = "checkbox";
-  var label = document.createElement('label');
-  label.for = data._id; 
-  checkbox.addEventListener('change', function() {
-    if (checkbox.value == true) 
-      socket.emit('subscribe', {room: data._id});
-    else
-      socket.emit('unsubscribe', {room: data._id});
-  });
-  t.appendChild(checkbox);
-  t.appendChild(label);
+  for (id in tags) {
+    var checkbox = document.createElement('checkbox');
+    checkbox.id = id;
+    checkbox.type = "checkbox";
+    var label = document.createElement('label');
+    label.setAttribute('for') = id; 
+    checkbox.addEventListener('change', function() {
+      if (checkbox.value == true) 
+        socket.emit('subscribe', {room: id});
+      else
+        socket.emit('unsubscribe', {room: id});
+    });
+    t.appendChild(checkbox);
+    t.appendChild(label);
+  }
   console.log(t);
 
 });
