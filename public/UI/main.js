@@ -61,8 +61,10 @@ var BackgroundPage = {
 	
 	loadImages : function () {
 		this.page = document.getElementById("imgcontent");
-		for (var i in backgrounds)
+		for (var i in backgrounds) {
 			this.page.appendChild(this.createNewImg(backgrounds[i]._id))
+			console.log(backgrounds[i]);
+		}
 		
 	}
 	
