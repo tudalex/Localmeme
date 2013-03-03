@@ -148,6 +148,7 @@ var memeInterface = {
 			
 		socket.emit("meme_posted", obj);
 		console.log(obj);
+		window.location.hash = "#homepage";
 	}
 }
 
