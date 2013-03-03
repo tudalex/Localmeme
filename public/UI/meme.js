@@ -145,6 +145,8 @@ var memeInterface = {
 		obj.tags = this.form.memetags.value.split(", ");
 		for (var i in this.form.memetext)
 			obj.text.push(this.form.memetext[i].value);
+			
+		console.log(obj);	
 	}
 }
 
