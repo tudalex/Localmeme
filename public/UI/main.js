@@ -79,7 +79,7 @@ var BackgroundPage = {
 
 var Homepage = {
 	
-	memeID = [],
+	memeID : [],
 	content : null,
 	canvas : null,
 	
