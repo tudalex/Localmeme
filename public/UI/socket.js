@@ -9,6 +9,8 @@ function displayLocation(position) {
 
 //build text string including co-ordinate data passed in paramete
   //display the string for demonstration
+  if (!position)
+    return;
   socket.emit('location', position);
   socket.emit('request_tags_near_location', position.coords);
 }
@@ -39,6 +41,20 @@ socket.on('tag', function (data){
 });
 
 socket.on('tag_end', function(data) {
+  var t = document.getElementById("tags");
+  var checkbox = document.createElement('checkbox');
+  checkbox.id = data._id;
+  checkbox.type = "checkbox";
+  var label = document.createElement('label');
+  label.for = data._id; 
+  checkbox.addEventListener('change', function() {
+    if (checkbox.value == true) 
+      socket.emit('subscribe', {room: data._id});
+    else
+      socket.emit('unsubscribe', {room: data._id});
+  });
+  t.appendChild(checkbox);
+  t.appendChild(label);
 
 });
 
