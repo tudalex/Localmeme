@@ -1,9 +1,4 @@
 $.mobile.ignoreContentEnabled = true;
-$(function() {
-	Device.getInfo();
-	memeInterface.init();
-});	
-
 
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
 	var words = text.split(' ');
