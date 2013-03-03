@@ -79,6 +79,7 @@ var BackgroundPage = {
 
 var Homepage = {
 	
+	memeID = [],
 	content : null,
 	canvas : null,
 	
@@ -91,7 +92,7 @@ var Homepage = {
 	loadMeme: function(info) {
 		console.log(Homepage);
 		var X = new Meme(info);
-		Homepage.content.appendChild(X.buildNode());
+		$(Homepage.content).prepend(X.buildNode());
 		X.render(Homepage.canvas);
 	}
 }

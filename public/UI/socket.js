@@ -44,8 +44,13 @@ socket.on('connect', function() {
 	});
 	
 	socket.on('meme', function (data) {
-		console.log(data);
-		Homepage.loadMeme(data);
+		
+		if (!Homepage.memeID[data._id]) {
+			console.log(data);
+			Homepage.memeID[data._id] = 1;
+			Homepage.loadMeme(data);
+		}
+		
 	});
 	
 	socket.on('tag', function (data){
