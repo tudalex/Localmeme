@@ -142,7 +142,7 @@ var memeInterface = {
 	
 	submitMeme: function() {
 		var obj = {
-			text = []
+			text : []
 		}
 		obj.id = this.bgImage;
 		obj.tags = this.form.memetags.value.split(", ");
