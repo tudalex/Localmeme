@@ -55,7 +55,7 @@ var BackgroundPage = {
 	createNewImg : function(url) {
 		var node = document.createElement("div");
 		node.className = "thumbnail";
-		node.style..backgroundImage="url('" + url + ""')"; 
+		node.style.backgroundImage="url('" + url + ""')"; 
 		return node;
 	},
 	
