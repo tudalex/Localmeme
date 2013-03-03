@@ -9,7 +9,7 @@ window.onload = function() {
 
 	document.addEventListener("click", BackgroundPage.pickImage);
 
-};
+}
 
 
 Device = {

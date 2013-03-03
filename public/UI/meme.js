@@ -34,6 +34,7 @@ var memeInterface = {
 	lineHeight: 65,
 	maxLineLength: 570,
 	
+	form: {},
 	isFromServer: false,
 	bgCanvas: null,
 	bgContext: null,
@@ -123,10 +124,28 @@ var memeInterface = {
 		this.width = Device.width;
 	},
 	
+	initForm: function() {
+		this.form.memetext = document.getElementById("memetext");
+		this.form.memetags = document.getElementById("memetags");
+	},
+	
 	init: function() {
 		this.initDeviceProp();
 		this.initText();
 		this.initBg('darth-vader.jpg');
+		this.initForm();
+	},
+	
+	submitMeme: function() {
+		var obj = {
+			text : []
+		}
+		obj.id = this.bgImage;
+		obj.tags = this.form.memetags.value.split(",");
+		for (var i=0; i<3; i++)
+			obj.text.push(this.form.memetext.children[2 * i].value);
+			
+		socket.emit("memeposted", obj);	
 	}
 }
 
