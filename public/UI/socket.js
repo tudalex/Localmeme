@@ -76,6 +76,7 @@ socket.on('background', function (data) {
   backgrounds.push(data._id);
   console.log(data);
 });
+
 socket.on('background_end', function(data) {
 	Stats.backgrounds++;
 	if (Stats.backgrounds == 2)
