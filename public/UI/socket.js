@@ -26,7 +26,8 @@ var Stats = {
 
 var backgrounds = new Array();
 var tags = new Array();
-var	socket = io.connect();
+var	socket;
+var socket_init = function () {socket = io.connect(); };
 
 
 socket.on('connect', function() {

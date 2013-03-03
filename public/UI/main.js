@@ -1,5 +1,5 @@
 
-window.onload = function() {
+window.addEventListener('load', function() {
 	Device.getInfo();
 	memeInterface.init();
 	Homepage.init();
@@ -9,8 +9,8 @@ window.onload = function() {
 		BackgroundPage.loadImages();
 
 	document.addEventListener("click", BackgroundPage.pickImage);
-
-}
+	socket_init();
+});
 
 
 Device = {
