@@ -36,7 +36,7 @@ Meme.prototype.drawText = function() {
 	this.context.textAlign = 'center';
 	this.context.textBaseline = 'middle';
 
-	for (var i = 0; i < 3; ++i)
+	for (var i = 0; i < this.info.text.length; ++i)
 		wrapText(this.context, this.info.text[i], x, y[i], this.canvas.width * 0.8, this.lineHeight);
 		
 	this.saveAsImg();
