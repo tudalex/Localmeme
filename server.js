@@ -47,7 +47,7 @@ io.sockets.on('connection', function (socket) {
 		socket.get('location', function (err, pos) {
 			data.loc = { x: pos.coords.latitude, y: pos.coords.longitude };
 			console.log(data);
-			collection.insert(data,{w:1}, function(err, result) {}));
+			collection.insert(data,{w:1}, function(err, result) {});
 			for (var x in data.tags) {
 				socket.in(data.tags[x]).emit('meme', data);
 			}
