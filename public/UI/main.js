@@ -2,7 +2,13 @@
 window.onload = function() {
 	Device.getInfo();
 	memeInterface.init();
+
+	Stats.backgrounds++;
+	if (Stats.backgrounds == 2)
+		BackgroundPage.loadImages();
+
 };
+
 
 Device = {
 	width: 960,
