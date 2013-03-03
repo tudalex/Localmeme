@@ -30,6 +30,9 @@ socket.emit('request_tags_near_location', position.coords);
   socket.on('meme', function (data) {
   	console.log(data);
   });
+  socket.on('tag', function (data){
+  	console.log(data);
+  });
 </script>
 <body>
 	<div id="locationData"></div>
