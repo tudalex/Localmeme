@@ -49,6 +49,11 @@
 	cursor: pointer;	
 }
 
+#memelistpage {
+	margin: 0;
+	padding: 0;
+}
+
 #memelist {
 	list-style: none;
 	margin:0;

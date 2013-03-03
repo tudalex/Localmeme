@@ -49,12 +49,12 @@ Meme.prototype.drawBgCb = function(e) {
 	
 	this.canvas.height = height;
 	
-	this.context = this.canvas.getContext("2d");
+	//this.context = this.canvas.getContext("2d");
 	
-	console.log(width);
-	console.log(this.canvas);
-	console.log(this.image.width);
-	console.log(this.image.height);
+	// console.log(width);
+	// console.log(this.canvas);
+	// console.log(this.image.width);
+	// console.log(this.image.height);
 	this.context.drawImage(this.image, 0, 0, this.image.width, this.image.height, 0, 0, width, height);
 	
 	if (this.isFromServer)
