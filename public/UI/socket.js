@@ -17,7 +17,7 @@ function displayLocation(position) {
 
 
 var Stats = {
-	backgrounds = 0,
+	backgrounds = 0
 }
 
 var backgrounds = new Array();
