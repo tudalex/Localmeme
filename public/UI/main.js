@@ -7,6 +7,8 @@ window.onload = function() {
 	if (Stats.backgrounds == 2)
 		BackgroundPage.loadImages();
 
+	document.addEventListener("click", BackgroundPage.pickImage);
+
 };
 
 
@@ -53,9 +55,9 @@ var BackgroundPage = {
 	page : null,
 	
 	createNewImg : function(url) {
-		var node = document.createElement("div");
+		var node = document.createElement("img");
 		node.className = "thumbnail";
-		node.style.backgroundImage="url('../Backgrounds/" + url + "')"; 
+		node.src="../Backgrounds/" + url; 
 		return node;
 	},
 	
@@ -64,9 +66,12 @@ var BackgroundPage = {
 		for (var i in backgrounds) {
 			this.page.appendChild(this.createNewImg(backgrounds[i]));
 		}
-		
-	}
+	},
 	
+	pickImage: function (e) {
+		if (e.target.className == 'thumbnail')
+			memeInterface.initBg(e.target.src);
+	}
 }
 
 

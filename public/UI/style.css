@@ -41,12 +41,8 @@
 }
 
 #imgcontent .thumbnail {
-	width: 25%;
-	height 50px;
-	background-size: contain;
-	float: left;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
+	width: 90%;
+	margin: 5%;
 }
 
 

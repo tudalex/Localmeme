@@ -28,7 +28,6 @@ function resizeCanvas(canvas, width, height) {
 
 
 var memeInterface = {
-	hash: 'vader',
 	width: 800,
 	height: 600,
 	fontSize: 60,
@@ -84,8 +83,8 @@ var memeInterface = {
        			this.saveToLocalStorage();
 	},
 	
-	loadFromLocalStorage: function() {
-		var data = window.localStorage.getItem(this.hash);
+	loadFromLocalStorage: function(url) {
+		var data = window.localStorage.getItem(url);
 		if (!data)
 			return false;
 		
@@ -93,9 +92,9 @@ var memeInterface = {
 		return true;
 	},
 	
-	loadFromServer: function() {
+	loadFromServer: function(url) {
 		this.isFromServer = true;
-		this.bgImage.src = 'darth-vader.jpg';
+		this.bgImage.src = url;
 	},
 	
 	
@@ -109,13 +108,15 @@ var memeInterface = {
 		}
 	},
 	
-	initBg: function() {
+	initBg: function(url) {
 		this.bgCanvas = $('#bg-canvas')[0];
 		this.bgContext = this.bgCanvas.getContext("2d");
 		this.bgImage = new Image();
+		
 		$(this.bgImage).bind('load', this.drawBgCb.bind(this));
-		if (!this.loadFromLocalStorage())
-			this.loadFromServer();
+		
+		if (!this.loadFromLocalStorage(url))
+			this.loadFromServer(url);
 	},
 	
 	initDeviceProp: function() {
@@ -125,8 +126,8 @@ var memeInterface = {
 	init: function() {
 		this.initDeviceProp();
 		this.initText();
-		this.initBg();
+		this.initBg('darth-vader.jpg');
 	}
-};
+}
 
 
