@@ -46,17 +46,17 @@ socket.on('tag', function (data){
 socket.on('tag_end', function(data) {
   var t = document.getElementById("tags_checkboxes");
   console.log(t);
-  for (id in tags) {
+  for (var id in tags) {
     var checkbox = document.createElement('checkbox');
-    checkbox.id = id;
+    checkbox.id = tags[id];
     checkbox.type = "checkbox";
     var label = document.createElement('label');
-    label.setAttribute('for', id); 
+    label.setAttribute('for', tags[id]); 
     checkbox.addEventListener('change', function() {
       if (checkbox.value == true) 
-        socket.emit('subscribe', {room: id});
+        socket.emit('subscribe', {room: tags[id]});
       else
-        socket.emit('unsubscribe', {room: id});
+        socket.emit('unsubscribe', {room: tags[id]});
     });
     t.appendChild(checkbox);
     t.appendChild(label);
