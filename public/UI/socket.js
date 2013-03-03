@@ -39,13 +39,13 @@ socket.on('meme', function (data) {
 });
 
 socket.on('tag', function (data){
-	console.log(data);
+	//console.log(data);
   tags.push(data._id);
 });
 
 socket.on('tag_end', function(data) {
   var t = $("#tags_checkboxes");
-  console.log(t);
+  //console.log(t);
   t.empty();
   var legend = document.createElement('legend');
   legend.innerHTML = "Alegeti streamuri:";
@@ -68,13 +68,13 @@ socket.on('tag_end', function(data) {
     t.appendChild(label);
   }
   $("#tags").trigger("create");
-  console.log(t);
+  //console.log(t);
 
 });
 
 socket.on('background', function (data) {
   backgrounds.push(data._id);
-  console.log(data);
+  //console.log(data);
 });
 
 socket.on('background_end', function(data) {
