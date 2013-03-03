@@ -14,6 +14,12 @@ function displayLocation(position) {
   socket.emit('location', position);
   socket.emit('request_tags_near_location', position.coords);
 }
+
+
+var Stats = {
+	backgrounds : 0
+}
+
 var backgrounds = new Array();
 var tags = new Array();
 var	socket = io.connect();
@@ -71,6 +77,7 @@ socket.on('background', function (data) {
   console.log(data);
 });
 socket.on('background_end', function(data) {
-	BackgroundPage.loadImages();
-  //TODO(gabi): Write page generating code over here.
+	Stats.backgrounds++;
+	if (Stats.backgrounds == 2)
+		BackgroundPage.loadImages();
 });

@@ -36,3 +36,18 @@
 	color: rgba(255,255,255,0);
 }
 
+#imgcontent {
+	
+}
+
+#imgcontent .thumbnail {
+	width: 25%;
+	height 50px;
+	background-size: contain;
+	float: left;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+
+

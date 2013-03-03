@@ -2,7 +2,13 @@
 window.onload = function() {
 	Device.getInfo();
 	memeInterface.init();
+
+	Stats.backgrounds++;
+	if (Stats.backgrounds == 2)
+		BackgroundPage.loadImages();
+
 };
+
 
 Device = {
 	width: 960,
@@ -49,15 +55,15 @@ var BackgroundPage = {
 	createNewImg : function(url) {
 		var node = document.createElement("div");
 		node.className = "thumbnail";
-		node.style..backgroundImage="url('" + url + ""')"; 
+		node.style.backgroundImage="url('../Backgrounds/" + url + "')"; 
 		return node;
 	},
 	
 	loadImages : function () {
 		this.page = document.getElementById("imgcontent");
-		
-		for (var i in backgrounds)
-			this.page.append(this.createNewImg(backgrounds[i]._id))
+		for (var i in backgrounds) {
+			this.page.appendChild(this.createNewImg(backgrounds[i]));
+		}
 		
 	}
 	
