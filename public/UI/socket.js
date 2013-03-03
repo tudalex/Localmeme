@@ -41,7 +41,7 @@ socket.on('tag_end', function(data) {
   var t = document.getElementById("tags_checkboxes");
   console.log(t);
   for (var id in tags) {
-    var checkbox = document.createElement('checkbox');
+    var checkbox = document.createElement('input');
     checkbox.id = tags[id];
     checkbox.type = "checkbox";
     checkbox.setAttribute('name', '');
