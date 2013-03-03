@@ -89,10 +89,10 @@ var Homepage = {
 	},
 	
 	loadMeme: function(info) {
-		console.log(this);
+		console.log(Homepage);
 		var X = new Meme(info);
-		this.content.appendChild(X.buildNode());
-		X.render(this.canvas);
+		Homepage.content.appendChild(X.buildNode());
+		X.render(Homepage.canvas);
 	}
 }
 
