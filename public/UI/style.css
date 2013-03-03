@@ -1,4 +1,10 @@
 
+
+#addpage_content {
+	margin: 0;
+	padding: 0;
+}
+
 #meme {
 	position: relative;
 }
@@ -10,8 +16,11 @@
 }
 
 #submitmeme {
-	margin: 10px 0 0 0;
 	width: 100%;	
+	margin: 10px 0 0 0;
+	padding: 0 10px;	
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;		
 }
 
 #submitmeme .memeTextInput {
