@@ -125,7 +125,6 @@ var memeInterface = {
 	},
 	
 	initForm: function() {
-		document.addEventListener
 		this.form.memetext = document.getElementById("memetext");
 		this.form.memetags = document.getElementById("memetags");
 		document.getElementById("memesubmit").addEventListener("click", this.submitMeme).bind(this);
