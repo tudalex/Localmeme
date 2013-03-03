@@ -51,9 +51,10 @@ io.sockets.on('connection', function (socket) {
 				data.loc = { x: pos.coords.latitude, y: pos.coords.longitude };
 			console.log(data);
 			collection.insert(data,{w:1}, function(err, result) {});
-			for (var x in data.tags) {
+			/*for (var x in data.tags) {
 				socket.in(data.tags[x]).emit('meme', data);
-			}
+			}*/
+			socket.broadcast('meme', data);
 		});
 		
 	/*	for (var socketId in io.sockets.sockets) {
