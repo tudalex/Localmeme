@@ -15,20 +15,26 @@ function displayLocation(position) {
 var backgrounds = new Array();
 var tags = new Array();
 var socket = io.connect();
+
 socket.on('connect', function() {
   getUserLocation();
   socket.emit('request_tag', ["awesome"]);
+  socket.emit('request_backgrounds');
 });
+
 socket.on('news', function (data) {
   console.log(data);
 });
+
 socket.on('meme', function (data) {
 	console.log(data);
 });
+
 socket.on('tag', function (data){
 	console.log(data);
   tags.push(data._id);
 });
+
 socket.on('background', function (data) {
   backgrounds.push(data._id);
   console.log(data);
