@@ -45,22 +45,22 @@
 			<div id="meme">
 				<canvas id="bg-canvas" class="canvasimg"></canvas>
 				<canvas id="text-canvas" class="canvasimg"></canvas>
+				<div id="submitmeme">
+					<input class="memeTextInput" name="top"    type="text" data-enhance="false"><br>
+					<input class="memeTextInput" name="middle" type="text" data-enhance="false"><br>
+					<input class="memeTextInput" name="bottom" type="text" data-enhance="false"><br>			
+				</div>
 			</div>
-
-			<div id="submitmeme">
-				<input class="memeTextInput" name="top"    type="text"><br>
-				<input class="memeTextInput" name="middle" type="text"><br>
-				<input class="memeTextInput" name="bottom" type="text"><br>			
-				<input value="Submit" type="submit">
-			</div>
+			<input value="Submit" type="submit">
 		</div>
 	</div>
 
 	<!-- Images page -->
 	<div data-role="page" id="imagespage">
 	    <div data-theme="c" data-role="header">
-			<a data-role="button" data-direction="reverse" data-transition="slide" href="#addpage" class="ui-btn-right">
-				Add
+			<a data-role="button" data-transition="slide" href="#homepage" data-icon="arrow-l"
+			data-iconpos="left" class="ui-btn-left">
+				Back
 			</a>
 			<h3> Select an image </h3>
 	    </div>
