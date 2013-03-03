@@ -7,6 +7,8 @@ window.onload = function() {
 	if (Stats.backgrounds == 2)
 		BackgroundPage.loadImages();
 
+	document.addEventListener("click", BackgroundPage.pickImage);
+
 };
 
 
@@ -64,10 +66,13 @@ var BackgroundPage = {
 		for (var i in backgrounds) {
 			this.page.appendChild(this.createNewImg(backgrounds[i]));
 		}
-		
+	},
+	
+	pickImage: function (e) {
+		if (e.target.className == 'thumbnail')
+			memeInterface.initBg(e.target.src);
 	}
 }
-
 
 
 
