@@ -47,7 +47,7 @@ Meme.prototype.drawBgCb = function(e) {
 	var width = this.canvas.width;
 	var height = width * this.image.height / this.image.width;
 	
-	this.canvas.width = width;
+	this.canvas.height = height;
 	
 	this.context.drawImage(this.image, 0, 0, this.image.width, this.image.height, 0, 0, width, height);
 	
