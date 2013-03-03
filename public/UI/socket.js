@@ -12,7 +12,8 @@ function displayLocation(position) {
   socket.emit('location', position);
   socket.emit('request_tags_near_location', position.coords);
 }
-
+var backgrounds = new Array();
+var tags = new Array();
 var socket = io.connect();
 socket.on('connect', function() {
   getUserLocation();
@@ -26,4 +27,9 @@ socket.on('meme', function (data) {
 });
 socket.on('tag', function (data){
 	console.log(data);
+  tags.push(data._id);
+});
+socket.on('background', function (data) {
+  backgrounds.push(data._id);
+  console.log(data);
 });

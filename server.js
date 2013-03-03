@@ -23,11 +23,13 @@ server.listen(8080);
  var MongoClient = require('mongodb').MongoClient;
 var collection;
 var col_tags;
+var col_bg;
 MongoClient.connect("mongodb://localhost:27017/content", function(err, db) {
   if(err) { return console.dir(err); }
   console.log("Connected to mongo.");
   collection  =db.collection('meme');
   col_tags = db.collection('tags');
+  col_bg = db.collection('bg');
 });
  
 
@@ -83,7 +85,17 @@ io.sockets.on('connection', function (socket) {
 		});
 		stream.on('end', function() {
 			console.log("End of tag stream.");
-		})
+		});
+	});
+
+	socket.on('request_backgrounds', function(data){
+		var stream = col_bg.find( { }).stream();
+		stream.on('data', function(item) {
+			socket.emit('background', item);
+		});
+		stream.on('end', function() {
+			console.log("End of tag stream.");
+		});
 	});
 	socket.on('disconect', function() {
 		
