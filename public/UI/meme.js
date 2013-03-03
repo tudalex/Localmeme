@@ -146,7 +146,7 @@ var memeInterface = {
 		for (var i=0; i<3; i++)
 			obj.text.push(this.form.memetext.children[2 * i].value);
 			
-		socket.emit("memeposted", obj);
+		socket.emit("meme_posted", obj);
 		console.log(obj);
 	}
 }
