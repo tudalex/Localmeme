@@ -11,6 +11,7 @@ function displayLocation(position) {
 //build text string including co-ordinate data passed in paramete
   //display the string for demonstration
   socket.emit('location', position);
+  console.log(position);
   if (!tags_loaded) {
     socket.emit('request_tags_near_location', position.coords);
     tags_loaded = true;
