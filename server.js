@@ -76,7 +76,7 @@ io.sockets.on('connection', function (socket) {
 	
 	socket.on('request_tags_near_location', function (data) { 
 		console.log(data);
-		var stream = col_tags.find( {location: { $within : {$center: [ [data.latitude, data.longitude], 1]}}});
+		var stream = col_tags.find( {location: { $within : {$center: [ [data.latitude, data.longitude], 1]}}}).stream();
 		console.log("Searching for tags around "+data.latitude+" "+data.longitude);
 		stream.on('data', function (item) {
 			socket.emit('tag', item);
